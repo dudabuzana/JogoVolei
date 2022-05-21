@@ -1,4 +1,4 @@
-# Jogo de Volei
+# Jogo de Vôlei
 Trabalho desenvolvido na matéria de Qualidade de Software
 
 # Enunciado
