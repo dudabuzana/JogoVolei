@@ -22,7 +22,7 @@ public class View extends javax.swing.JFrame implements GameScoreObserver {
         setLocationRelativeTo(null);
     }
     
-    public void atualizaLabels() {
+    public void atualizaLabels() { //Poderia manter o padrão inglês usando "updateLabels()"
         lblTeam1.setText(gameController.getGame().getTeam1().getName());
         lblTeam2.setText(gameController.getGame().getTeam2().getName());
         lblHorario.setText(gameController.getGame().getHorario());
@@ -246,6 +246,7 @@ public class View extends javax.swing.JFrame implements GameScoreObserver {
 
     @Override
     public void resetGame() {
+        //Sugestão: Poderia utilizar apenas "lblScoreTeam1.setText("0");", sem a necessidade de concatenação
         lblScoreTeam1.setText("" + 0);
         lblScoreTeam2.setText("" + 0);
         lblSetCount.setText("" + 1);
@@ -258,6 +259,7 @@ public class View extends javax.swing.JFrame implements GameScoreObserver {
 
     @Override
     public void refreshScore(int x, int y) {
+        //Sugestão: Poderia utilizar um cast como "String.valueOf(x)" e "String.valueOf(y)" no lugar de concatenar uma String vazia com um valor inteiro
         lblScoreTeam1.setText("" + x);
         lblScoreTeam2.setText("" + y);
     }
@@ -268,13 +270,16 @@ public class View extends javax.swing.JFrame implements GameScoreObserver {
     }
 
     @Override
+    //Sugestão: Poderia renomear o parâmetro "i" para algo mais significativo
     public void wonSet(int i, int set, String[] list) {
-        lblSetCount.setText("" + set);
+        //Sugestão: Poderia utilizar um cast como "String.valueOf(set)" no lugar de concatenar uma String vazia com um valor inteiro
+        lblSetCount.setText("" + set); 
         JOptionPane.showMessageDialog(null, "O time " + getNameTime(i) + " ganhou o SET!!");
         jList1.setListData(list);
     }
 
     @Override
+    //Sugestão: Poderia renomear o parâmetro "i" para algo mais significativo
     public void finishGame(int i) {
         JOptionPane.showMessageDialog(null, "O Time " + getNameTime(i) + " ganhou o Jogo!!!");
         btnAddTeam1.setEnabled(false);
@@ -283,7 +288,8 @@ public class View extends javax.swing.JFrame implements GameScoreObserver {
         btnSubTeam2.setEnabled(false);
     }
     
-    public String getNameTime(int i) {
+    //Sugestão: Manter o padrão de código em inglês utilizando "getNameTeam(int i)"
+    public String getNameTime(int i) { 
         return (i == 1 ? gameController.getGame().getTeam1().getName() : gameController.getGame().getTeam2().getName());
     }
 
