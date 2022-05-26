@@ -9,7 +9,7 @@ public class Game {
    
     private Team team1;
     private Team team2;
-    private String horario;
+    private String horario; //Sugestção: Poderia manter o padrão inglês com "time"
 
     public Game(Team team1, Team team2, String horario) {
         this.team1 = team1;
